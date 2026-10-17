@@ -36,11 +36,13 @@
 .band {
   font-size: 55px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .title {
   font-size: 35px;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .data {

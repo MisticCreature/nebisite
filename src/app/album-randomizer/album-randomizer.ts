@@ -88,6 +88,16 @@ getEmbedUrl(link: string): SafeResourceUrl | null {
 
     return this.sanitizer.bypassSecurityTrustResourceUrl(link);
   }
+  // YouTube video
+if (link.includes('youtube.com') || link.includes('youtu.be')) {
+  const id = this.extractYouTubeId(link);
+
+  if (id) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      `https://www.youtube.com/embed/${id}`
+    );
+  }
+}
 
   if (!link) return null;
   return null;

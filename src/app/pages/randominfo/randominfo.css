@@ -38,3 +38,39 @@ li{margin: 10px 0;}
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.4px whitesmoke;
 }
+
+@media (max-width: 768px) {
+
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+    box-sizing: border-box;
+  }
+
+  .gallery {
+    float: none;
+    width: 200px;       /* keep slider fixed */
+    margin: 0 auto 2rem auto;
+    text-align: center;
+  }
+
+  .specgit,
+  .specpc {
+    float: none;
+    width: 100%;        /* allow lists to shrink */
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 18px;
+    box-sizing: border-box;
+  }
+
+  .specgit h2,
+  .specpc h2 {
+    text-align: center;
+  }
+
+  li {
+    margin: 10px 0;
+  }
+}
