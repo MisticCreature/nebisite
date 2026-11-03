@@ -41,6 +41,10 @@ export class Gallery {
    {
     url: "tshirtpix.png",
     title: "tshirt"
+  },
+  {
+    url: "nyanlabslogofulltransV2.png",
+    title: "nyanlabslogo"
   }
   
 

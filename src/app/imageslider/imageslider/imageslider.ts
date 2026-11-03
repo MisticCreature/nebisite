@@ -75,9 +75,8 @@ export class Imageslider {
     untracked(() => this.timeoutID.set(ID));
   })
   constructor(private elRef: ElementRef) {
-    // effect to load image whenever currentIndex changes
     effect(() => {
-      const index = this.currentIndex(); // read signal → triggers effect
+      const index = this.currentIndex();
       const slide = this.slides()[index];
       if (!slide) return;
 
@@ -89,11 +88,9 @@ export class Imageslider {
     });
     this.updateDarkMode();
 
-    // Listen for body class changes dynamically
     const observer = new MutationObserver(() => this.updateDarkMode());
     observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
 
-    // Effect: whenever darkMode changes, update arrow/dot classes
     effect(() => {
       const isDark = this.darkMode();
       this.syncDarkClass(isDark);
@@ -105,7 +102,6 @@ export class Imageslider {
   }
 
   syncDarkClass(isDark: boolean) {
-    // Only target arrows/dots inside this component
     const arrows = Array.from(this.elRef.nativeElement.querySelectorAll('.arrow')) as HTMLElement[];
     const dots = Array.from(this.elRef.nativeElement.querySelectorAll('.dot')) as HTMLElement[];
 
