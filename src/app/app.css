@@ -1,14 +1,13 @@
 .body {
-  margin-left: 5rem;
   width: auto;
   min-height: 100vh;
-
+  min-width: 0;
   position: relative;
+  flex: 1;
+  margin-left: 5rem;
   padding: 3rem;
-
-  background: #070707;
-  color: white;
-  transition: all 0.5s ease;
+  box-sizing: border-box;
+  transition: margin-left 0.5s ease;
 }
 * {
   box-sizing: border-box;
@@ -28,12 +27,12 @@
 }
 
 .body-trimmed {
-  width: calc(100% - 16.5625rem);
+  width: auto;
   margin-left: 16.5625rem;
 }
 
 .body-md-screen {
-  width: calc(100% - 5rem);
+  width: auto;
   margin-left: 5rem;
 }
 .layout {
@@ -44,15 +43,6 @@
 .sidebar {
   width: 5rem;
   flex-shrink: 0;
-}
-
-.body {
-  flex: 1;
-  padding: 3rem;
-}
-.body {
-  margin-left: 16.5625rem;
-  transition: margin-left 0.5s ease;
 }
 
 .body.sidebar-collapsed {
