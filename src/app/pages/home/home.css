@@ -1,4 +1,4 @@
-body{text-align: center;}
+body{text-align: center; min-width: 300px; width: 100%;}
 h1{font-size: 40px; margin-top: 0;}
 p{font-size: 25px;}
-img{image-rendering: pixelated; width: 500px; height: auto;}
+img{image-rendering: pixelated; max-width: 500px; width: 100%; height: auto;}

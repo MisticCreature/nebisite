@@ -1,9 +1,36 @@
-.gallery
-{
-    width: 700px;
+body{text-align: center; width: 100%;}
+.gallery {
+    width: min(700px, calc(100vw - 32px));
     margin: 0 auto;
-
     text-align: center;
-
+    box-sizing: border-box;
 }
-h1{font-size: 40px; margin-top: -30px;}
+
+h1 {
+    font-size: clamp(26px, 6vw, 40px);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: clamp(18px, 4vw, 25px);
+}
+
+app-imageslider {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .gallery {
+        width: calc(100vw - 32px);
+        margin: 0 auto;
+    }
+}
+
+.gallery,
+app-imageslider {
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+}

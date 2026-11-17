@@ -1,31 +1,35 @@
-<div class="slider" [style.height.px]="sliderHeight()">
-
+<div class="slider-wrapper">
   <div class="arrow-hit left" (click)="gotoprev()">
-    <span class="arrow left">❮</span>
+    <span class="arrow">❮</span>
   </div>
 
   <div class="arrow-hit right" (click)="gotonext()">
-    <span class="arrow right">❯</span>
+    <span class="arrow">❯</span>
   </div>
 
-  <div class="slides-overflow">
-    <div class="slides-container" [ngStyle]="containerStyle()">
-
-      @for (slide of slides(); track $index) {
-        <div class="slide" [ngStyle]="getStyle(slide)"></div>
-      }
-
+  <div class="slider"   [style.height.px]="sliderHeight()"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd($event)"
+  (touchcancel)="onTouchEnd($event)">
+    <div class="slides-overflow">
+      <div class="slides-container"   [ngStyle]="containerStyle()"
+  [class.no-transition]="isDragging() || isSnapping()"
+  (transitionend)="onTrackTransitionEnd($event)">
+@for (slide of extendedSlides(); track $index) {
+  <div class="slide" [ngStyle]="getStyle(slide)"></div>
+}
+      </div>
     </div>
   </div>
-
 </div>
 
-<div class="dotscontainer">
+<div class="dotscontainer" [class.dark-mode]="!darkMode()">
   @for (slide of slides(); track $index) {
-    <div class="dot"
-         [class.active]="$index === currentIndex()"
-         (click)="gotoslide($index)">
-      ⬤
-    </div>
+    <div
+      class="dot"
+      [class.active]="$index === currentIndex()"
+      (click)="gotoslide($index)"
+    >⬤</div>
   }
 </div>

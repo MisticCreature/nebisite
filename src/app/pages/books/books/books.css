@@ -1,7 +1,6 @@
 .body
 {
-text-align: center;
-
+text-align: center; min-width: 300px; width: 100%;
 }
 .list{
     text-align: center;

@@ -17,11 +17,13 @@
  {
   background: #dcdcdc;
   color: rgb(0, 0, 0);
+  transition: all 0.5s ease;
 
  }
 .body.dark {
   background: #070707;
   color: white;
+  transition: all 0.5s ease;
 
 }
 

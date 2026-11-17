@@ -1,83 +1,196 @@
-.slider {
-position: relative;
-width: 100%;
-transition: height 0.5s ease-in-out;
-height: 100%;
+:host {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
 }
 
+.slider {
+  position: relative;
+  width: calc(100% - 130px);
+  margin: 0 auto;
+  height: auto;
+  box-sizing: border-box;
+}
+.slider-wrapper {
+  position: relative;
+  width: calc(100% + 130px);
+  margin-left: -65px;
+  box-sizing: border-box;
+}
 
 .slides-overflow {
-    overflow: hidden;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
 }
+
 .slides-container {
-display: flex;
-transition: transform ease-out 0.5s;
-height: 100%;
-
-
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-out;
+  will-change: transform;
 }
+
+.slides-container.no-transition {
+  transition: none !important;
+}
+
 .slide {
-    border-radius: 10px;
-    background-size: cover;
-    background-position: center;
-    flex-shrink: 0;
-    transition: height 500ms ease;
-    image-rendering: crisp-edges;
-}
-.arrow 
-{
-position: absolute;
-top: 50%;
-transform: translate(0, -50%);
-font-size: 45px;
-color: white;
-z-index: 1;
-padding: 12px 22px;
-margin: -12px -18px;
-cursor: pointer;
-opacity: 0.6;
-user-select: none;
-transition: opacity 0.2s;
-transition: font-size 0.2s;
-transition: left 0.2s;
-transition: right 0.2s;
-
-
-
-
-}
-.arrow.dark{color:#070707}
-.arrow:hover
-{
-opacity: 0.8;
+  flex-shrink: 0;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  image-rendering: pixelated;
 }
 
-.arrow.left{left: -50px;}
-.arrow.left:hover{left: -60px; transition: left 0.2s;}
-.arrow.right{right: -50px;}
-.arrow.right:hover{right: -60px; transition: right 0.2s;}
+/* Arrows */
+.arrow-hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}
 
+.arrow-hit.left {
+  left: 0px;
+  justify-content: center;
+}
 
+.arrow-hit.right {
+  right: 0px;
+  justify-content: center;
+}
+
+.arrow {
+  display: block;
+  color: white;
+  font-size: 40px;
+  padding: 8px;
+  opacity: 0.7;
+  text-shadow:
+    -1px -1px 2px black,
+     1px -1px 2px black,
+    -1px  1px 2px black,
+     1px  1px 2px black,
+     0 0 5px black;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.arrow-hit:hover .arrow {
+  opacity: 1;
+}
+
+.arrow-hit.left:hover .arrow {
+  transform: translateX(-4px);
+}
+
+.arrow-hit.right:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Dots */
 .dotscontainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  padding-bottom: 4px;
+  box-sizing: border-box;
 }
 
 .dot {
-    margin: 0 3px;
-    cursor: pointer;
-    font-size: 20px;
-    color: white;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-    transition: color 0.2s;
+  font-size: 18px;
+  line-height: 1;
+  color: white;
+  opacity: 0.5;
+  cursor: pointer;
+  user-select: none;
 }
-.dot.dark{color: #070707}
 
 .dot.active {
-    color:yellow;
-    opacity: 0.8;
+  opacity: 1;
 }
-.dot.active.dark{color:#f049ff}
+
+@media (max-width: 830px) {
+  :host {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .slider-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+  }
+.slides-container {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-out;
+  will-change: transform;
+}
+
+.slides-container.no-transition {
+  transition: none !important;
+}
+
+  .slider {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    touch-action: pan-y;
+  }
+
+  .arrow-hit {
+    width: 15%;
+    z-index: 1;
+  }
+
+  .arrow-hit.left {
+    left: 0;
+    justify-content: flex-start;
+  }
+
+  .arrow-hit.right {
+    right: 0;
+    justify-content: flex-end;
+  }
+  .dot{font-size: 15px;}
+}
+
+/* Light mode */
+.dotscontainer .dot {
+  color: #333;
+  opacity: 0.45;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.dotscontainer .dot.active {
+  color: #4b0fa6;
+  opacity: 0.7;
+}
+
+/* Dark mode */
+.dotscontainer.dark-mode .dot {
+  color: #fff;
+  opacity: 0.45;
+}
+
+.dotscontainer.dark-mode .dot.active {
+  color: yellow;
+  opacity: 0.7;
+}
